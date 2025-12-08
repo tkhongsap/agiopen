@@ -27,33 +27,42 @@ This project provides a comprehensive framework for implementing computer use au
 ## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/agiopen.git
-cd agiopen
+# Install the OAGI SDK
+pip install oagi
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
+# Enable permissions (required for desktop automation)
+oagi agent permission
 ```
+
+**macOS Users:** Grant Accessibility and Screen Recording permissions in System Settings > Privacy & Security.
 
 ## Configuration
 
-1. Copy the environment template:
+1. Get your API key at [developer.agiopen.org](https://developer.agiopen.org) (includes $10 free credits)
+
+2. Set environment variables:
 ```bash
-cp .env.example .env
+export OAGI_API_KEY=sk-your-api-key-here
+export OAGI_BASE_URL=https://api.agiopen.org
 ```
 
-2. Edit `.env` and add your API key:
+Or create a `.env` file:
 ```bash
-OAGI_API_KEY=your_api_key_here
+OAGI_API_KEY=sk-your-api-key-here
+OAGI_BASE_URL=https://api.agiopen.org
 ```
 
-Get your API key at [developer.agiopen.org](https://developer.agiopen.org)
+## Quick Start (CLI)
 
-## Quick Start
+Run your first agent in one command:
+
+```bash
+oagi agent run "Go to https://agiopen.org" --model lux-actor-1
+```
+
+See the full [Quickstart Guide](docs/quickstart.md) for desktop setup tips and troubleshooting.
+
+## Quick Start (Python)
 
 ```python
 import asyncio
@@ -254,6 +263,7 @@ oagi agent run "Fill the contact form" --verbose
 
 See the `docs/` directory for detailed documentation:
 
+- [Quickstart Guide](docs/quickstart.md) - Get running in 5 minutes
 - [Lux Overview](docs/lux-overview.md) - Model capabilities and modes
 - [SDK Reference](docs/sdk-reference.md) - API documentation
 - [Use Cases](docs/use-cases.md) - Implementation guides
